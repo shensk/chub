@@ -6,6 +6,7 @@ import com.shensk.web.rpc.api.EchoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class IndexController extends BaseController{
@@ -14,7 +15,8 @@ public class IndexController extends BaseController{
     private EchoService echoService;
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public void index(){
-        System.out.println(thymeleaf("/ref"));
+    public ModelAndView index(ModelAndView modelAndView){
+        modelAndView.setViewName(thymeleaf("/index"));
+        return modelAndView;
     }
 }
