@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/shensk.iml" filepath="$PROJECT_DIR$/shensk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shensk-common/shensk-common.iml" filepath="$PROJECT_DIR$/shensk-common/shensk-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/shensk-web/shensk-web.iml" filepath="$PROJECT_DIR$/shensk-web/shensk-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/shensk-web/shensk-web-client/shensk-web-client.iml" filepath="$PROJECT_DIR$/shensk-web/shensk-web-client/shensk-web-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/shensk-web/shensk-web-rpc-api/shensk-web-rpc-api.iml" filepath="$PROJECT_DIR$/shensk-web/shensk-web-rpc-api/shensk-web-rpc-api.iml" />
