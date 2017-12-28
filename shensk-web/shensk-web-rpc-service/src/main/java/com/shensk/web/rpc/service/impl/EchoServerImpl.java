@@ -1,6 +1,7 @@
 package com.shensk.web.rpc.service.impl;
 
 import com.shensk.dao.mapper.UserMapper;
+import com.shensk.dao.model.User;
 import com.shensk.web.rpc.api.EchoService;
 import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class EchoServerImpl implements EchoService{
     private UserMapper userMapper;
 
     public String echo(String str) {
-//        User User = userMapper.getOne(1L);
-        return "hello" + str;
+        User User = userMapper.getOne(1L);
+        return User.toString();
     }
 }
