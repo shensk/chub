@@ -16,7 +16,7 @@ public class IndexController extends BaseController{
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView index(ModelAndView modelAndView){
-        modelAndView.setViewName(thymeleaf("/index"));
+        modelAndView.setViewName("/index");
         return modelAndView;
     }
 }
