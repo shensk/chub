@@ -15,7 +15,7 @@ public class EchoServerImpl implements EchoService{
     private UserMapper userMapper;
 
     public String echo(String str) {
-        User User = userMapper.getOne(1L);
-        return User.toString();
+        User user = userMapper.getOne(1L);
+        return user.toString();
     }
 }
