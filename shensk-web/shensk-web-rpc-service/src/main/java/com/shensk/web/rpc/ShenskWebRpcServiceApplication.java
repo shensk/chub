@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.shensk.dao.mapper")
+@MapperScan("com.shensk.web.dao.mapper")
 public class ShenskWebRpcServiceApplication {
 
 	public static void main(String[] args) {

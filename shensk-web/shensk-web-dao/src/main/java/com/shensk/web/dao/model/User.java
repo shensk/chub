@@ -1,4 +1,4 @@
-package com.shensk.dao.model;
+package com.shensk.web.dao.model;
 import java.io.Serializable;
 
 public class User implements Serializable {

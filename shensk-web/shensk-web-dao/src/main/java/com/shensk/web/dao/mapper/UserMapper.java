@@ -1,6 +1,6 @@
-package com.shensk.dao.mapper;
+package com.shensk.web.dao.mapper;
 
-import com.shensk.dao.model.User;
+import com.shensk.web.dao.model.User;
 
 import java.util.List;
 
