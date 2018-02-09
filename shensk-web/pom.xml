@@ -12,8 +12,10 @@
     <artifactId>shensk-web</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>shensk-web-client</module>
         <module>shensk-web-rpc-api</module>
         <module>shensk-web-rpc-service</module>
+        <module>shensk-web-dao</module>
     </modules>
 
     <dependencyManagement>

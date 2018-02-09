@@ -16,7 +16,9 @@ public class IndexController extends BaseController{
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView index(ModelAndView modelAndView){
-        modelAndView.setViewName(thymeleaf("/index"));
+        String re = echoService.echo("ssk");
+        System.out.println(re);
+        modelAndView.setViewName("/index");
         return modelAndView;
     }
 }
