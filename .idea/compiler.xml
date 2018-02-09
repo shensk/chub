@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="shensk-common" />
         <module name="shensk-web-client" />
+        <module name="shensk-web-dao" />
         <module name="shensk-web-rpc-api" />
         <module name="shensk-web-rpc-service" />
       </profile>
@@ -16,7 +17,8 @@
       <module name="shensk" target="1.5" />
       <module name="shensk-common" target="1.5" />
       <module name="shensk-web" target="1.5" />
-      <module name="shensk-web-client" target="1.8" />
+      <module name="shensk-web-client" target="1.5" />
+      <module name="shensk-web-dao" target="1.5" />
       <module name="shensk-web-rpc-api" target="1.5" />
       <module name="shensk-web-rpc-service" target="1.5" />
     </bytecodeTargetLevel>
