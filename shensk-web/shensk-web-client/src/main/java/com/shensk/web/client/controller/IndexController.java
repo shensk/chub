@@ -16,8 +16,8 @@ public class IndexController extends BaseController{
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(Model model){
-//        String re = echoService.echo("ssk");
-//        System.out.println(re);
+        String re = echoService.echo("ssk");
+        System.out.println(re);
         model.addAttribute("base","123456");
         return thymeleaf("/index");
     }
