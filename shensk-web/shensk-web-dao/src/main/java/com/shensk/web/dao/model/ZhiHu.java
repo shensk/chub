@@ -1,8 +1,9 @@
 package com.shensk.web.dao.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ZhiHu {
+public class ZhiHu implements Serializable {
     private Integer id;
 
     private Integer zid;
@@ -18,6 +19,8 @@ public class ZhiHu {
     private Date createdAt;
 
     private String body;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;

@@ -11,5 +11,12 @@
 
     <artifactId>shensk-web-rpc-api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.shensk</groupId>
+            <artifactId>shensk-web-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

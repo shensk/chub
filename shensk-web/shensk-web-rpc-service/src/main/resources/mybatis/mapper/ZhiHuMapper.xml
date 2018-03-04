@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shensk.web.dao.mapper.ZhiHuMapper">
-  <resultMap id="BaseResultMap" type="com.shensk.web.dao.model.ZhiHu">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="zid" jdbcType="INTEGER" property="zid" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shensk.web.dao.mapper.ZhiHuMapper" >
+  <resultMap id="BaseResultMap" type="com.shensk.web.dao.model.ZhiHu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="zid" property="zid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="user_avatar" property="userAvatar" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shensk.web.dao.model.ZhiHu">
-    <result column="body" jdbcType="LONGVARCHAR" property="body" />
+  <resultMap id="ResultMapWithBLOBs" type="com.shensk.web.dao.model.ZhiHu" extends="BaseResultMap" >
+    <result column="body" property="body" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -42,25 +42,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -71,139 +71,139 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     id, zid, title, image, user_avatar, user_name, created_at
   </sql>
-  <sql id="Blob_Column_List">
+  <sql id="Blob_Column_List" >
     body
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.shensk.web.dao.model.ZhiHuExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.shensk.web.dao.model.ZhiHuExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from zhihu
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.shensk.web.dao.model.ZhiHuExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shensk.web.dao.model.ZhiHuExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from zhihu
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.shensk.web.dao.model.ZhiHuExample">
+  <delete id="deleteByExample" parameterType="com.shensk.web.dao.model.ZhiHuExample" >
     delete from zhihu
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insertSelective" parameterType="com.shensk.web.dao.model.ZhiHu">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insertSelective" parameterType="com.shensk.web.dao.model.ZhiHu" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into zhihu
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="zid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zid != null" >
         zid,
       </if>
-      <if test="title != null">
+      <if test="title != null" >
         title,
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         image,
       </if>
-      <if test="userAvatar != null">
+      <if test="userAvatar != null" >
         user_avatar,
       </if>
-      <if test="userName != null">
+      <if test="userName != null" >
         user_name,
       </if>
-      <if test="createdAt != null">
+      <if test="createdAt != null" >
         created_at,
       </if>
-      <if test="body != null">
+      <if test="body != null" >
         body,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="zid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zid != null" >
         #{zid,jdbcType=INTEGER},
       </if>
-      <if test="title != null">
+      <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         #{image,jdbcType=VARCHAR},
       </if>
-      <if test="userAvatar != null">
+      <if test="userAvatar != null" >
         #{userAvatar,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null">
+      <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="createdAt != null">
+      <if test="createdAt != null" >
         #{createdAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="body != null">
+      <if test="body != null" >
         #{body,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.shensk.web.dao.model.ZhiHuExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.shensk.web.dao.model.ZhiHuExample" resultType="java.lang.Integer" >
     select count(*) from zhihu
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update zhihu
-    <set>
-      <if test="record.id != null">
+    <set >
+      <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.zid != null">
+      <if test="record.zid != null" >
         zid = #{record.zid,jdbcType=INTEGER},
       </if>
-      <if test="record.title != null">
+      <if test="record.title != null" >
         title = #{record.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.image != null">
+      <if test="record.image != null" >
         image = #{record.image,jdbcType=VARCHAR},
       </if>
-      <if test="record.userAvatar != null">
+      <if test="record.userAvatar != null" >
         user_avatar = #{record.userAvatar,jdbcType=VARCHAR},
       </if>
-      <if test="record.userName != null">
+      <if test="record.userName != null" >
         user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
-      <if test="record.createdAt != null">
+      <if test="record.createdAt != null" >
         created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.body != null">
+      <if test="record.body != null" >
         body = #{record.body,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
     update zhihu
     set id = #{record.id,jdbcType=INTEGER},
       zid = #{record.zid,jdbcType=INTEGER},
@@ -213,11 +213,11 @@
       user_name = #{record.userName,jdbcType=VARCHAR},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       body = #{record.body,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update zhihu
     set id = #{record.id,jdbcType=INTEGER},
       zid = #{record.zid,jdbcType=INTEGER},
@@ -226,288 +226,32 @@
       user_avatar = #{record.userAvatar,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.shensk.web.dao.model.ZhiHu">
+  <update id="updateByPrimaryKeySelective" parameterType="com.shensk.web.dao.model.ZhiHu" >
     update zhihu
-    <set>
-      <if test="zid != null">
+    <set >
+      <if test="zid != null" >
         zid = #{zid,jdbcType=INTEGER},
       </if>
-      <if test="title != null">
+      <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         image = #{image,jdbcType=VARCHAR},
       </if>
-      <if test="userAvatar != null">
+      <if test="userAvatar != null" >
         user_avatar = #{userAvatar,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null">
+      <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="createdAt != null">
+      <if test="createdAt != null" >
         created_at = #{createdAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="body != null">
-        body = #{body,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.shensk.web.dao.model.ZhiHu">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="zid" jdbcType="INTEGER" property="zid" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shensk.web.dao.model.ZhiHu">
-    <result column="body" jdbcType="LONGVARCHAR" property="body" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    id, zid, title, image, user_avatar, user_name, created_at
-  </sql>
-  <sql id="Blob_Column_List">
-    body
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.shensk.web.dao.model.ZhiHuExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from zhihu
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" parameterType="com.shensk.web.dao.model.ZhiHuExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from zhihu
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <delete id="deleteByExample" parameterType="com.shensk.web.dao.model.ZhiHuExample">
-    delete from zhihu
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insertSelective" parameterType="com.shensk.web.dao.model.ZhiHu">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into zhihu
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="zid != null">
-        zid,
-      </if>
-      <if test="title != null">
-        title,
-      </if>
-      <if test="image != null">
-        image,
-      </if>
-      <if test="userAvatar != null">
-        user_avatar,
-      </if>
-      <if test="userName != null">
-        user_name,
-      </if>
-      <if test="createdAt != null">
-        created_at,
-      </if>
-      <if test="body != null">
-        body,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="zid != null">
-        #{zid,jdbcType=INTEGER},
-      </if>
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="image != null">
-        #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="userAvatar != null">
-        #{userAvatar,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="createdAt != null">
-        #{createdAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="body != null">
-        #{body,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.shensk.web.dao.model.ZhiHuExample" resultType="java.lang.Integer">
-    select count(*) from zhihu
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update zhihu
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.zid != null">
-        zid = #{record.zid,jdbcType=INTEGER},
-      </if>
-      <if test="record.title != null">
-        title = #{record.title,jdbcType=VARCHAR},
-      </if>
-      <if test="record.image != null">
-        image = #{record.image,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userAvatar != null">
-        user_avatar = #{record.userAvatar,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userName != null">
-        user_name = #{record.userName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createdAt != null">
-        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.body != null">
-        body = #{record.body,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update zhihu
-    set id = #{record.id,jdbcType=INTEGER},
-      zid = #{record.zid,jdbcType=INTEGER},
-      title = #{record.title,jdbcType=VARCHAR},
-      image = #{record.image,jdbcType=VARCHAR},
-      user_avatar = #{record.userAvatar,jdbcType=VARCHAR},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
-      body = #{record.body,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update zhihu
-    set id = #{record.id,jdbcType=INTEGER},
-      zid = #{record.zid,jdbcType=INTEGER},
-      title = #{record.title,jdbcType=VARCHAR},
-      image = #{record.image,jdbcType=VARCHAR},
-      user_avatar = #{record.userAvatar,jdbcType=VARCHAR},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      created_at = #{record.createdAt,jdbcType=TIMESTAMP}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.shensk.web.dao.model.ZhiHu">
-    update zhihu
-    <set>
-      <if test="zid != null">
-        zid = #{zid,jdbcType=INTEGER},
-      </if>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="image != null">
-        image = #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="userAvatar != null">
-        user_avatar = #{userAvatar,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null">
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="createdAt != null">
-        created_at = #{createdAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="body != null">
+      <if test="body != null" >
         body = #{body,jdbcType=LONGVARCHAR},
       </if>
     </set>

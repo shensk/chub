@@ -22,6 +22,12 @@
         <!-- Java模型生成equals和hashcode方法 -->
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
 
+        <!--<plugin type="com.shensk.common.plugin.SerializablePlugin">-->
+            <!--<property name="suppressJavaInterface" value="false"/>-->
+        <!--</plugin>-->
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true" />
